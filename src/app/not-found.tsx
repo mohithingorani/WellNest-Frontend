@@ -8,7 +8,7 @@ export default function NotFound() {
       </div>
       <div>
         <Image
-          className="moving-element mt-24"
+          className="md:moving-element mt-24"
           src="/towing.svg"
           width="500"
           height="500"

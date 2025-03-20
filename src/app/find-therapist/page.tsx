@@ -1,0 +1,31 @@
+import FindTherapistCard from "@/components/FindTherapistCard";
+
+export default function FindTherapist() {
+  return (
+    <div className="mt-30 px-4 ">
+      <div className="text-4xl relative  flex justify-center ">
+        Finding Your Right Therapist is Easy! Choose your path :
+      </div>
+      <div className="flex flex-col items-center gap-4 justify-center mt-8 mb-16 ">
+        <FindTherapistCard
+          link="/therapist-finder"
+          heading="Find Your Therapist Match"
+          description="Answer a few questions and matching engine finds your ideal therapist"
+          image="quiz.svg"
+        />
+        <FindTherapistCard
+          link="/therapist-finder"
+          heading="Have A Recommendation ?"
+          description="You have a particular therapist in mind"
+          image="/find/problem.svg"
+        />
+        <FindTherapistCard
+          link="/therapists"
+          heading="View All Available Therapists"
+          description="View all the therapists currently present and available choose accordingly"
+          image="/find/therapist.svg"
+        />
+      </div>
+    </div>
+  );
+}

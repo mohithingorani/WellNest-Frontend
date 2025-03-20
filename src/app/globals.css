@@ -1,26 +1,29 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.moving-element {
+  width: 90vh;
+  height: 300px;
+  animation: move 5s linear infinite alternate; /* Adjust duration and timing as needed */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.moving-element {
+  width: 90vh;
+  height: 300px;
+  animation: move 5s linear infinite alternate;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes move {
+  0% { 
+    transform: translateX(0) rotateY(0deg); /* Start at left edge */
+  }
+  49% { 
+    transform: translateX(100%) rotateY(0deg); /* Move to right edge */
+  }
+  50% { 
+    transform: translateX(100%) rotateY(180deg); /* Flip immediately */
+  }
+  100% { 
+    transform: translateX(0) rotateY(180deg); /* Move back to left edge with flip */
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}

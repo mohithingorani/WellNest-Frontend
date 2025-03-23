@@ -42,7 +42,7 @@ const fetchValue = async (prompt: string) => {
   //   console.error("Error generating content with Gemini API:", error);
   //   throw error;
   // }
-  const response = await axios.post(`${process.env.BACKEND_ML_URL}/api/chat`, {
+  const response = await axios.post(`http://192.168.194.108:5000/api/chat`, {
     message: prompt,
   });
   return response.data.response;

@@ -3,6 +3,8 @@ import FilterCard from "@/components/FilterCard";
 import TherapistCard from "@/components/TherapistCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import SkeletonCard from "@/components/SkeletonCard";
+import TherapistCardSkeleton from "@/components/SkeletonCard";
 interface Language {
   id: string;
   name: string;
@@ -24,7 +26,7 @@ export interface Therapist {
 export default function Therapists() {
   const [therapists, setTherapists] = useState<Therapist[] | []>([]);
   async function getTherapists() {
-    const response = await axios.get(`${process.env.BACKEND_URL}/alltherapists`);
+    const response = await axios.get(`http://localhost:3000/alltherapists`);
     console.log(response);
     setTherapists(response.data);
   }
@@ -49,6 +51,7 @@ export default function Therapists() {
             <span className="text-[#01818C]">Online | Individual Therapy</span>
           </h2>
           <div className="flex flex-col sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
+            {therapists.length===0 && <TherapistCardSkeleton/> }
             {therapists.map((therapist) => {
               return <TherapistCard name={therapist.name} key={therapist.id} />;
             })}

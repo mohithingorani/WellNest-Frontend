@@ -12,7 +12,7 @@ export interface MessageObject {
   username: string;
 }
 
-const fetchValue = async (prompt: string, context: string[]) => {
+const fetchValue = async (prompt: string) => {
   // try {
   //   const genAI = new GoogleGenerativeAI(
   //     process.env.NEXT_PUBLIC_GEMINI_API_KEY || ""
@@ -49,13 +49,12 @@ const fetchValue = async (prompt: string, context: string[]) => {
 };
 
 export default function Chats() {
-  const [context, setContext] = useState<string[]>([]);
+  // const [context, setContext] = useState<string[]>([]);
   const [inbox, setInbox] = useState<MessageObject[]>([]);
   const [message, setMessage] = useState<string>("");
   const [Error, setError] = useState<boolean>(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [response, setResponse] = useState<string | null>(null);
 
   const getTime = () => {
     const dateWithoutSecond = new Date();
@@ -78,12 +77,11 @@ export default function Chats() {
     setMessage("");
     setIsLoading(true);
     try {
-      const contextArray = inbox.map((messageObject) => messageObject.message);
-      setContext(contextArray); // Update the context state
-      console.log("Fetching value with context:", context);
-      const responseText = await fetchValue(message, context);
+      // const contextArray = inbox.map((messageObject) => messageObject.message);
+      // setContext(contextArray); // Update the context state
+      // console.log("Fetching value with context:", context);
+      const responseText = await fetchValue(message);
       console.log("Response received:", responseText);
-      setResponse(responseText);
       if (responseText) {
         const newMessage: MessageObject = {
           message: responseText,

@@ -10,7 +10,7 @@ export default function NavBar() {
     LOGIN: "/login",
   };
   const router = useRouter();
-  let pathname = usePathname();
+  const pathname = usePathname();
 
   
   return (

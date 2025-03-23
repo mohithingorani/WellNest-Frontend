@@ -1,7 +1,11 @@
 import Image from "next/image";
 import ExpertiseCard from "./Expertise";
 
-export default function TherapistCard() {
+export default function TherapistCard({
+name  
+}:{
+  name: string;
+}) {
   return (
     <div className="w-full max-w-sm sm:max-w-md md:max-w-xl lg:max-w-3xl rounded-lg shadow-sm bg-white border border-gray-200">
       <div className="flex flex-col items-center text-start w-full md:flex-row p-4">
@@ -14,7 +18,7 @@ export default function TherapistCard() {
         />
         <div className="flex flex-col justify-between px-4 py-4 md:py-8 leading-normal w-full">
           <h5 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900">
-            Vikasin Pramodh
+            {name}
           </h5>
           <h4 className="text-base sm:text-lg italic mb-2">Associate Psychologist</h4>
           <h4 className="mb-2 text-sm sm:text-lg font-light">

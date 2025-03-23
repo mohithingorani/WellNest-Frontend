@@ -21,7 +21,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col items-center px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col items-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 ">
       <div className="mt-12 flex flex-col gap-4 items-center text-center pt-6">
         <div className="text-[#1a7772] text-3xl sm:text-4xl md:text-5xl mt-6 font-medium">
         &quot;Healing begins with a <span className="underline">conversation</span>&quot;

@@ -8,7 +8,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
   const pathname = usePathname();
 
   // Define the routes where you don't want NavBar & Footer
-  const hideLayoutForRoutes = ["/ai-chatbot"]; // Change this
+  const hideLayoutForRoutes = ["/ai-chatbot","/login"]; // Change this
 
 
   const shouldHideLayout = hideLayoutForRoutes.includes(pathname);

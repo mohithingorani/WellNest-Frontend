@@ -6,7 +6,7 @@ export default function FindTherapist() {
       <div className="text-4xl relative  flex justify-center ">
         Finding Your Right Therapist is Easy! Choose your path :
       </div>
-      <div className="flex flex-col items-center gap-4 justify-center mt-8 mb-16 ">
+      <div className="flex flex-col items-center gap-4 justify-center px-4 md:px-0 mt-8 mb-16 ">
         <FindTherapistCard
           link="/therapist-finder"
           heading="Find Your Therapist Match"

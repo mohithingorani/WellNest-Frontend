@@ -23,7 +23,7 @@ export default function FindTherapistCard({
       className="flex text-start flex-col items-center bg-white border py-4 border-gray-200 rounded-lg shadow-sm md:flex-row max-w-3xl w-full hover:bg-gray-100"
     >
       <Image
-        className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
+        className="object-cover w-full p-4 md:p-0 rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
         height={"300"}
         width={"300"}
         src={`${image}`}

@@ -11,15 +11,7 @@ export default function NavBar() {
   };
   const router = useRouter();
   let pathname = usePathname();
-  if(pathname==="/"){
-    pathname = "home"
-  }
-  else if(pathname==='/about'){
-    pathname="about"
-  }
-  else if(pathname==="/contact"){
-    pathname="contact"
-  }
+
   
   return (
     <nav>
@@ -43,9 +35,9 @@ export default function NavBar() {
           <a
             key={index}
             href={Links[link]}
-            className = {`h-8 ${pathname===link.toLowerCase()?"text-[#3AAFA9]":" text-slate-600"} hover:text-[#3AAFA9]`}
+            className = {`h-8 ${pathname===Links[link]?"text-[#3AAFA9]":" text-slate-600"} hover:text-[#3AAFA9]`}
           >
-            <div className={`hover:border-b-2 ${pathname===link.toLowerCase()&&"border-b-2"}  h-full`}>{link}</div>
+            <div className={`hover:border-b-2 ${pathname===Links[link]&&"border-b-2"}  h-full`}>{link}</div>
           </a>
         ))}
       </div>

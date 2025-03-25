@@ -16,7 +16,8 @@ export interface Therapist {
   name: string;
   email: string;
   password?: string;
-  speciality: string | null;
+  image: string;
+  speciality: string ;
   experience: null | string;
   createdAt: string;
   updatedAt: string;
@@ -51,9 +52,23 @@ export default function Therapists() {
             <span className="text-[#01818C]">Online | Individual Therapy</span>
           </h2>
           <div className="flex flex-col sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
-            {therapists.length===0 && <TherapistCardSkeleton/> }
+            {therapists.length === 0 && (
+              <div className="gap-4 flex flex-col ">
+                <TherapistCardSkeleton />
+                <TherapistCardSkeleton />
+                <TherapistCardSkeleton />
+                <TherapistCardSkeleton />
+              </div>
+            )}
             {therapists.map((therapist) => {
-              return <TherapistCard name={therapist.name} key={therapist.id} />;
+              return (
+                <TherapistCard
+                  name={therapist.name}
+                  speciality = {therapist.speciality}
+                  key={therapist.id}
+                  image={therapist.image}
+                />
+              );
             })}
           </div>
         </div>

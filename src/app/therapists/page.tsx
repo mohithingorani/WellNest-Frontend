@@ -3,7 +3,6 @@ import FilterCard from "@/components/FilterCard";
 import TherapistCard from "@/components/TherapistCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import SkeletonCard from "@/components/SkeletonCard";
 import TherapistCardSkeleton from "@/components/SkeletonCard";
 interface Language {
   id: string;

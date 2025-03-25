@@ -26,7 +26,7 @@ export interface Therapist {
 export default function Therapists() {
   const [therapists, setTherapists] = useState<Therapist[] | []>([]);
   async function getTherapists() {
-    const response = await axios.get(`http://64.227.155.243:3002/alltherapists`);
+    const response = await axios.get(`https://wellnest.api.mohit-hingorani.tech/alltherapists`);
     console.log(response);
     setTherapists(response.data);
   }

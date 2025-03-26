@@ -1,6 +1,11 @@
+import axios from "axios";
 import Link from "next/link";
 
 export function Footer() {
+  const sendEmail = () => {
+    const message = axios.post(`${process.env.BACKEND_URL}/admin/email`, {});
+  };
+
   return (
     <>
       <div className="w-full  bg-slate-50 text-black text-2xl py-8 grid grid-cols-1 md:grid-cols-4 gap-4 shadow-md">
@@ -36,7 +41,7 @@ export function Footer() {
             <br /> GHS
             <br /> B7 - 227
           </div>
-        
+
           <div className="pt-8">© 2025 by Mohit Hingorani and Rushil Misra</div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -65,7 +70,10 @@ export function Footer() {
               ></textarea>
             </div>
             <div className="pt-4">
-              <button className="bg-black border-4 border-black text-white hover:bg-white hover:text-black w-full px-3 py-1.5">
+              <button
+                onClick={sendEmail}
+                className="bg-black border-4 border-black text-white hover:bg-white hover:text-black w-full px-3 py-1.5"
+              >
                 Send
               </button>
             </div>

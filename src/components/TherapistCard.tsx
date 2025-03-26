@@ -54,7 +54,7 @@ export default function TherapistCard({
           <div className="flex flex-col justify-start mb-2 sm:mb-0">
             <div className="text-xs sm:text-sm">Next Available On</div>
             <div className="underline text-sm sm:text-base">
-              March 20, 2025 4:00 PM IST
+              April 3, 2025 4:00 PM IST
             </div>
           </div>
           <div className="flex gap-2 sm:gap-4">

@@ -17,10 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins_init.className}  bg-[#F5F5F5]`}>
+      <div>
         {children}
-      </body>
-    </html>
+      </div>
   );
 }

@@ -1,7 +1,7 @@
+// @ts-nocheck
 import axios from "axios";
-// import CredentialsProvider from "next-auth/providers/credentials";
+import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-
 
 export const NEXT_AUTH = {
   providers: [
@@ -37,7 +37,8 @@ export const NEXT_AUTH = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async session({ session, token}: any) {
+    //@typescript-eslint/ban-ts-comment
+    async session({ session, token }: any) {
       console.log(session);
       if (session && session.user) {
         session.user.id = token.userId;
@@ -50,13 +51,12 @@ export const NEXT_AUTH = {
       const name = profile.name;
       const picture = profile.picture;
       const user = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/user`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/user`,
         {
           name,
           email,
           password: "",
           phoneNumber: 123123123123,
-          picture
         }
       );
       if (user) {

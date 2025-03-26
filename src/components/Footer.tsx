@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 import Link from "next/link";
 
 export function Footer() {

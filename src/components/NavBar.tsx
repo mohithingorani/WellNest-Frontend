@@ -48,9 +48,9 @@ export default function NavBar() {
           <a
             key={index}
             href={Links[link]}
-            className = {`h-8 ${pathname===Links[link]?"text-[#3AAFA9]":" text-slate-600"}  hover:text-[#3AAFA9] `}
+            className = {`h-8 ${pathname===Links[link]?"text-[#3AAFA9]":" text-slate-600"}   hover:text-[#3AAFA9] `}
           >
-            <button className={`hover:border-b-2 ${pathname===Links[link]&&"border-b-2"} cursor-pointer  h-full`}>{link}</button>
+            <button className={`hover:border-b-2 ${pathname===Links[link]&&"border-b-2"} cursor-pointer   h-full`}>{link}</button>
           </a>
         ))}
         <div className={`h-8 cursor-pointer text-slate-600 hover:text-[#3AAFA9]`}>

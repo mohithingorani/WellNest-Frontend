@@ -45,13 +45,15 @@ export const NEXT_AUTH = {
       }
       return session;
     },
+    
     async signIn({ profile }: any) {
       console.log(123);
+    try{
       const email = profile.email;
       const name = profile.name;
       const picture = profile.picture;
       const user = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/user`,
+        `https://wellnest.api.mohit-hingorani.tech/user`,
         {
           name,
           email,
@@ -64,10 +66,13 @@ export const NEXT_AUTH = {
       } else {
         return false;
       }
-    },
-
-    pages: {
-      signIn: "/login",
+    }catch(err){
+      console.log(error);
+      return false;
+    }
     },
   },
+  pages: {
+    signIn: "/login",
+  }
 };

@@ -29,9 +29,7 @@ export default function Home() {
         <div className="text-base sm:text-lg max-w-2xl">
           Experience tailored care from our award-winning therapists for all your mental health concerns & wellness needs.
         </div>
-        <div>
-          HEY 
-        </div>
+        
         <div className="pt-6 text-[#01818C] text-2xl sm:text-3xl font-medium">
           What brings you here today?
         </div>

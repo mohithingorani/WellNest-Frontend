@@ -14,11 +14,11 @@ export default function TherapistCard({
     <div className="w-full max-w-sm sm:max-w-md md:max-w-xl lg:max-w-3xl rounded-lg shadow-sm bg-white border border-gray-200">
       <div className="flex flex-col items-center text-start w-full md:flex-row p-4">
         <Image
-          className="object-cover w-full md:w-48 rounded-lg h-72 md:h-auto"
+          className="object-fill w-full md:w-48 rounded-lg h-72 md:h-auto"
           src={`/people/${image}`}
           alt="Therapist Image"
-          width={200}
-          height={200}
+          width={150}
+          height={150}
         />
         <div className="flex flex-col justify-between px-4 py-4 md:py-8 leading-normal w-full">
           <h5 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900">

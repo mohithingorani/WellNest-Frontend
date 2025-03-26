@@ -104,16 +104,16 @@ export default function Login() {
                           <Image
                             src="/close_eye.svg"
                             alt="hide"
-                            width="40"
-                            height="40"
+                            width="30"
+                            height="30"
                           />
                         )}
                         {!showPassword && (
                           <Image
                             src="/open_eye.svg"
                             alt="hide"
-                            width="40"
-                            height="40"
+                            width="30"
+                            height="30"
                           />
                         )}
                       </button>
@@ -130,7 +130,7 @@ export default function Login() {
                           callbackUrl: "http://localhost:3001",
                         });
                       }}
-                      className="w-full hover:bg-gray-200 text-center border py-[8px] border-gray-300  rounded-[10px] bg-gray-50 flex justify-center items-center gap-3"
+                      className="w-full cursor-pointer hover:bg-gray-200 text-center border py-[8px] border-gray-300  rounded-[10px] bg-gray-50 flex justify-center items-center gap-3"
                     >
                       <Image
                         src="/google.svg"
@@ -200,7 +200,7 @@ export default function Login() {
                           callbackUrl: "http://localhost:3001",
                         });
                       }}
-                      className="w-full hover:bg-gray-200 text-center border py-[8px] border-gray-300  rounded-[10px] bg-gray-50 flex justify-center items-center gap-3"
+                      className="w-full cursor-pointer hover:bg-gray-200 text-center border py-[8px] border-gray-300  rounded-[10px] bg-gray-50 flex justify-center items-center gap-3"
                     >
                       <Image
                         src="/google.svg"

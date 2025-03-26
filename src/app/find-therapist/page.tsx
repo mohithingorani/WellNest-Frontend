@@ -1,6 +1,10 @@
 import FindTherapistCard from "@/components/FindTherapistCard";
+import FindTherapistCard2 from "@/components/FindTherapistCard2";
 
 export default function FindTherapist() {
+
+  
+
   return (
     <div className="mt-30 px-4 ">
       <div className="text-4xl relative  flex justify-center ">
@@ -13,8 +17,7 @@ export default function FindTherapist() {
           description="Answer a few questions and matching engine finds your ideal therapist"
           image="quiz.svg"
         />
-        <FindTherapistCard
-          link="/therapist-finder"
+        <FindTherapistCard2
           heading="Have A Recommendation ?"
           description="You have a particular therapist in mind"
           image="/find/problem.svg"

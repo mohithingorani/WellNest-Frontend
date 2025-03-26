@@ -1,5 +1,6 @@
 "use client";
 
+import { signIn } from "next-auth/react";
 // import { welcomeImageBlurDataUrl } from "@/data/base64images";
 // import { signIn } from "next-auth/react";
 import Image from "next/image";
@@ -124,11 +125,11 @@ export default function Login() {
                   <div className="flex justify-center w-full mt-4">or</div>
                   <div className="w-full mt-4">
                     <button
-                    //   onClick={async () => {
-                    //     await signIn("google", {
-                    //       callbackUrl: "http://localhost:3001",
-                    //     });
-                    //   }}
+                      onClick={async () => {
+                        await signIn("google", {
+                          callbackUrl: "http://localhost:3001",
+                        });
+                      }}
                       className="w-full hover:bg-gray-200 text-center border py-[8px] border-gray-300  rounded-[10px] bg-gray-50 flex justify-center items-center gap-3"
                     >
                       <Image
@@ -137,7 +138,7 @@ export default function Login() {
                         height="30"
                         alt="googlelogo"
                       />
-                      <div>Sigfn in with Google</div>
+                      <div>Sign in with Google</div>
                     </button>
                   </div>
                 </div>
@@ -194,11 +195,11 @@ export default function Login() {
                   <div className="flex justify-center w-full mt-4">or</div>
                   <div className="w-full mt-4">
                     <button
-                    //   onClick={async () => {
-                    //     await signIn("google", {
-                    //       callbackUrl: "http://localhost:3001",
-                    //     });
-                    //   }}
+                      onClick={async () => {
+                        await signIn("google", {
+                          callbackUrl: "http://localhost:3001",
+                        });
+                      }}
                       className="w-full hover:bg-gray-200 text-center border py-[8px] border-gray-300  rounded-[10px] bg-gray-50 flex justify-center items-center gap-3"
                     >
                       <Image

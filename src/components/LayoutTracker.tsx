@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import NavBar from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
+import { Providers } from "@/app/providers";
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -15,9 +16,11 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 
   return (
     <>
+    <Providers>
       {!shouldHideLayout   && <NavBar />}
       {children}
       {!shouldHideLayout  && <Footer />}
+      </Providers>
     </>
   );
 }

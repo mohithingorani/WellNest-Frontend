@@ -3,7 +3,6 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import LayoutWrapper from "@/components/LayoutTracker";
 
-
 const poppins_init = Poppins({
   subsets: ["latin"],
   weight: ["100", "300", "700"],

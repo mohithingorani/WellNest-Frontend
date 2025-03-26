@@ -2,9 +2,9 @@ import axios from "axios";
 import Link from "next/link";
 
 export function Footer() {
-  const sendEmail = () => {
-    const message = axios.post(`${process.env.BACKEND_URL}/admin/email`, {});
-  };
+  // const sendEmail = () => {
+  //   const message = axios.post(`${process.env.BACKEND_URL}/admin/email`, {});
+  // };
 
   return (
     <>
@@ -71,7 +71,7 @@ export function Footer() {
             </div>
             <div className="pt-4">
               <button
-                onClick={sendEmail}
+                // onClick={sendEmail}
                 className="bg-black border-4 border-black text-white hover:bg-white hover:text-black w-full px-3 py-1.5"
               >
                 Send

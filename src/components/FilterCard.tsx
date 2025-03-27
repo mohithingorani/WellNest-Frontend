@@ -53,7 +53,7 @@ export default function FilterCard() {
 
   return (
     <>
-      <div className="w-full border shadow-md rounded-2xl bg-white p-4 h-[250px]">
+      <div className="w-full border shadow-md rounded-2xl bg-[#E6E8D2] text-black border-black  p-4 h-[250px]">
         <h1 className="text-2xl font-bold mb-2">Apply Filters</h1>
         <div className="flex text-xs gap-1  ">
           {data.map((object) => {

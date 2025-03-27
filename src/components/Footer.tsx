@@ -8,12 +8,12 @@ export function Footer() {
 
   return (
     <>
-      <div className="w-full  bg-slate-50 text-black text-2xl py-8 grid grid-cols-1 md:grid-cols-4 gap-4 shadow-md">
+      <div className="w-full  bg-[#E6E8D2] text-black text-2xl py-8 grid grid-cols-1 md:grid-cols-4 gap-4 shadow-md">
         <div></div>
         <div className="text-center md:text-left">GET IN TOUCH:</div>
         <div className="text-center md:text-left">CONTACT US:</div>
       </div>
-      <div className="px-4 w-full bg-slate-50 text-black text-sm py-8 grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="px-4 w-full bg-[#E6E8D2] text-black text-sm py-8 grid grid-cols-1 md:grid-cols-4 gap-4">
         <div></div>
         <div className="flex flex-col gap-4 text-center md:text-left">
           <div>

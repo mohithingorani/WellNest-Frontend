@@ -30,7 +30,7 @@ export default function FindTherapistCard2({
         console.log("Button Clicked");
         setShowForm(!showForm);
       }}
-      className="flex text-start flex-col items-center bg-white border py-4 border-gray-200 rounded-lg shadow-sm md:flex-row max-w-3xl w-full hover:bg-gray-100"
+      className="flex text-start flex-col border-black items-center hover:bg-[#d6d8bf] bg-[#E6E8D2] border py-4  rounded-lg shadow-sm md:flex-row max-w-3xl w-full "
     >
       <Image
         className="object-cover w-full p-4 md:p-0 rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"

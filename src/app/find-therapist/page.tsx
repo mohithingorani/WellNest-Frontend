@@ -6,7 +6,7 @@ export default function FindTherapist() {
   
 
   return (
-    <div className="mt-30 px-4 ">
+    <div className="mt-30 px-4 h-full md:h-screen  ">
       <div className="text-4xl relative  flex justify-center ">
         Finding Your Right Therapist is Easy! Choose your path :
       </div>

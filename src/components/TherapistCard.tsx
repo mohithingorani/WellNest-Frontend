@@ -11,7 +11,7 @@ export default function TherapistCard({
   speciality:string
 }) {
   return (
-    <div className="w-full max-w-sm sm:max-w-md md:max-w-xl lg:max-w-3xl rounded-lg shadow-sm bg-white border border-gray-200">
+    <div className="w-full max-w-sm sm:max-w-md md:max-w-xl lg:max-w-3xl rounded-lg shadow-sm bg-[#E6E8D2] border-black text-black border ">
       <div className="flex flex-col items-center text-start w-full md:flex-row p-4">
         <Image
           className="object-fill w-full md:w-48 rounded-lg h-72 md:h-auto"

@@ -48,7 +48,7 @@ export default function Therapists() {
         <div className="md:col-span-3 md:pl-16">
           <h2 className="text-2xl md:text-4xl font-semibold mb-4 mt-4">
             Showing Results for{" "}
-            <span className="text-[#01818C]">Online | Individual Therapy</span>
+            <span >Online | Individual Therapy</span>
           </h2>
           <div className="flex flex-col sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
             {therapists.length === 0 && (

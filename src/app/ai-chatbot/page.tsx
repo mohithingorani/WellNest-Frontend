@@ -1,7 +1,8 @@
 "use client";
 
 import TextMessage2 from "@/components/TextMessage2";
-import axios from "axios";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 

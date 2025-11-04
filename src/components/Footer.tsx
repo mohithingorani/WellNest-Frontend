@@ -19,30 +19,18 @@ export function Footer() {
           <div>
             Mob:{" "}
             <Link href="/afsd" className="underline">
-              +91 9811033533
+              +91 95794 11799
             </Link>
             <span>, </span>
-            <Link className="underline" href={""}>
-              +91 8296868510
-            </Link>
-          </div>
-          <div>
-            Email:{" "}
-            <Link href="/afsd" className="underline">
-              mohithingorani2003@gmail.com
-            </Link>
-            <span>, </span>
-            <Link className="underline" href={""}>
-              rushilmisra@gmail.com
-            </Link>{" "}
+            
           </div>
           <div>
             Manpal University Jaipur,
             <br /> GHS
-            <br /> B7 - 227
+           
           </div>
 
-          <div className="pt-8">© 2025 by Mohit Hingorani and Rushil Misra</div>
+          <div className="pt-8">© 2025 by Dishita Sharma</div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-4">

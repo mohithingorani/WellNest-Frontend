@@ -12,40 +12,37 @@ export interface MessageObject {
   username: string;
 }
 
-const fetchValue = async (prompt: string) => {
-  // try {
-  //   const genAI = new GoogleGenerativeAI(
-  //     process.env.NEXT_PUBLIC_GEMINI_API_KEY || ""
-  //   );
-  //   const model = await genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const fetchValue = async (prompt: string, context: string[] = []) => {
+  try {
+    const genAI = new GoogleGenerativeAI(
+      process.env.NEXT_PUBLIC_GEMINI_API_KEY || ""
+    );
 
-  //   const myPrompt = `
-  //     You are a content generator for my website.
-  //     Please provide clear, concise, and engaging text responses based on the input prompt.
-  //     You are a therapist who provides online therapy. Be very friendly and supportive.
-  //     Understand the context and provide a response that is relevant to the user's input.
-  //     uses Cognitive Behavioral Therapy (CBT), mindfulness techniques, and stress management tools to help  feel more in control of their emotions.
-  //     Do not use stars or any special characters in your responses.
-  //     Only output plain text.
-  //     Try to make small responses as it is chat. Not compulsory, just a suggestion.
-  //     Don't use * or # in response.
-  //     Make the content short.
-  //     This is the context: ${context.join(" ")}. // Join the context array into a single string
-  //     The content should be suitable for a general audience and formatted appropriately for web display.
-  //     Make sure the response is informative, accurate, and directly related to the input prompt.
-  //     The prompt is: ${prompt}.
-  //   `;
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-  //   const result = await model.generateContent(myPrompt);
-  //   return result.response.text;
-  // } catch (error) {
-  //   console.error("Error generating content with Gemini API:", error);
-  //   throw error;
-  // }
-  const response = await axios.post(`http://192.168.194.108:5000/api/chat`, {
-    message: prompt,
-  });
-  return response.data.response;
+    const myPrompt = `
+      You are a content generator for my website.
+      Please provide clear, concise, and engaging text responses based on the input prompt.
+      You are a therapist who provides online therapy. Be very friendly and supportive.
+      Use Cognitive Behavioral Therapy (CBT), mindfulness techniques, and stress management tools to help users feel more in control of their emotions.
+      Do not use stars or any special characters in your responses.
+      Only output plain text.
+      Keep responses relatively short (chat-style).
+      Make sure the response is suitable for a general audience.
+      Context: ${context.join(" ")}
+      Prompt: ${prompt}
+    `;
+
+    const result = await model.generateContent(myPrompt);
+
+    // ✅ Gemini SDK returns text via .response.text()
+    const text = result.response.text();
+
+    return text;
+  } catch (error) {
+    console.error("Error generating content with Gemini API:", error);
+    throw new Error("Gemini API call failed");
+  }
 };
 
 export default function Chats() {
@@ -65,40 +62,41 @@ export default function Chats() {
     return currentTime;
   };
 
-  async function handleSendMessage() {
-    if (!message.trim()) return;
-    const myMessage: MessageObject = {
-      message: message,
-      id: "user",
-      time: getTime(),
-      username: "User ",
-    };
-    setInbox((prevInbox) => [...prevInbox, myMessage]);
-    setMessage("");
-    setIsLoading(true);
-    try {
-      // const contextArray = inbox.map((messageObject) => messageObject.message);
-      // setContext(contextArray); // Update the context state
-      // console.log("Fetching value with context:", context);
-      const responseText = await fetchValue(message);
-      console.log("Response received:", responseText);
-      if (responseText) {
-        const newMessage: MessageObject = {
-          message: responseText,
-          id: "bot",
-          time: getTime(),
-          username: "Bot",
-        };
-        setInbox((prevInbox) => [...prevInbox, newMessage]);
-        setMessage("");
-      }
-    } catch (e) {
-      console.error("Error fetching chat response", e);
-      setError(true);
-    } finally {
-      setIsLoading(false);
+ async function handleSendMessage() {
+  if (!message.trim()) return;
+
+  const myMessage: MessageObject = {
+    message,
+    id: "user",
+    time: getTime(),
+    username: "User",
+  };
+
+  setInbox((prev) => [...prev, myMessage]);
+  setMessage("");
+  setIsLoading(true);
+
+  try {
+    const contextArray = inbox.map((msg) => msg.message);
+    const responseText = await fetchValue(message, contextArray);
+
+    if (responseText) {
+      const botMessage: MessageObject = {
+        message: responseText,
+        id: "bot",
+        time: getTime(),
+        username: "Veronica",
+      };
+      setInbox((prev) => [...prev, botMessage]);
     }
+  } catch (e) {
+    console.error("Error fetching chat response:", e);
+    setError(true);
+  } finally {
+    setIsLoading(false);
   }
+}
+
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });

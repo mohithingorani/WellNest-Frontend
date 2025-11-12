@@ -1,7 +1,7 @@
 "use client";
 
 import TextMessage2 from "@/components/TextMessage2";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import axios from "axios";
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -13,46 +13,43 @@ export interface MessageObject {
   username: string;
 }
 
-const fetchValue = async (prompt: string, context: string[] = []) => {
-  try {
-    const genAI = new GoogleGenerativeAI(
-      process.env.NEXT_PUBLIC_GEMINI_API_KEY || ""
-    );
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
-    const myPrompt = `
-      You are a content generator for my website.
-      Please provide clear, concise, and engaging text responses based on the input prompt.
-      You are a therapist who provides online therapy. Be very friendly and supportive.
-      Use Cognitive Behavioral Therapy (CBT), mindfulness techniques, and stress management tools to help users feel more in control of their emotions.
-      Do not use stars or any special characters in your responses.
-      Only output plain text.
-      Keep responses relatively short (chat-style).
-      Make sure the response is suitable for a general audience.
-      Context: ${context.join(" ")}
-      Prompt: ${prompt}
-    `;
-
-    const result = await model.generateContent(myPrompt);
-
-    // ✅ Gemini SDK returns text via .response.text()
-    const text = result.response.text();
-
-    return text;
-  } catch (error) {
-    console.error("Error generating content with Gemini API:", error);
-    throw new Error("Gemini API call failed");
-  }
-};
 
 export default function Chats() {
-  // const [context, setContext] = useState<string[]>([]);
+  const [conversationSummary, setConversationSummary] = useState<string>("");
   const [inbox, setInbox] = useState<MessageObject[]>([]);
   const [message, setMessage] = useState<string>("");
   const [Error, setError] = useState<boolean>(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [aiMessage,setAIMessage] = useState<string>("");
+const fetchValue = async ( usermessage: string, aimessage="") => {
+  try {
+    const message = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/ai`,{
+      usermessage,
+      aimessage,
+      summary:conversationSummary
+
+    })
+
+    const response:{
+      text:string,
+      summary:string
+    } =  message.data;
+    setConversationSummary(response.summary);
+    setAIMessage(response.text);
+    return response.text;
+
+    
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
+
+
 
   const getTime = () => {
     const dateWithoutSecond = new Date();
@@ -78,12 +75,11 @@ export default function Chats() {
   setIsLoading(true);
 
   try {
-    const contextArray = inbox.map((msg) => msg.message);
-    const responseText = await fetchValue(message, contextArray);
+    const response = await fetchValue(message, conversationSummary,);
 
-    if (responseText) {
+    if (response) {
       const botMessage: MessageObject = {
-        message: responseText,
+        message: response,
         id: "bot",
         time: getTime(),
         username: "Veronica",
@@ -156,6 +152,9 @@ export default function Chats() {
             >
               Send
             </button>
+            <div>
+
+            </div>
           </div>
         </div>
       </div>

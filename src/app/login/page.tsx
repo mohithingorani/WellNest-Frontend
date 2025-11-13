@@ -1,240 +1,118 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-// import { welcomeImageBlurDataUrl } from "@/data/base64images";
-// import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
-// import LazyLoad from 'react-lazy-load';
-export default function Login() {
-  // const [firstName, setFirstName] = useState("");
-  // const [lastName, setLastName] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [email, setEmail] = useState("");
 
+export default function Login() {
   const [formState, setFormState] = useState<"signup" | "signin">("signin");
   const [showPassword, setShowPassword] = useState(false);
+
   return (
-    <div>
-      
-      <div
-        className="flex flex-col justify-center items-center h-screen bg-slate-300 xl:px-24"
-        style={{
-          backgroundImage: "url(background.jpg)",
-          backgroundSize: "cover",
-        }}
-      >
-        <div className="w-full h-full py-20 px-[20px]  md:px-[50px]   lg:px-[60px] xl:px-[100px] 2xl:px-[300px]">
-          <div className=" bg-white  h-full grid grid-cols-1 md:grid-cols-2 items-center p-[15px] rounded-[50px] shadow-2xl">
-            <div className="w-full h-full p-5  lg:p-10 grid-cols-1 overflow-y-hidden overflow-x-hidden ">
+    <div className="min-h-screen p-4  flex items-center justify-center bg-[#896790]px-4">
+      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 bg-[#E6E8D2] rounded-3xl shadow-xl overflow-hidden">
+
+        {/* Left Section */}
+        <div className="p-10 flex flex-col justify-center">
+          <Image src="/wellnestlogo.svg" width="100" height="100" alt="logo" />
+
+          <h1 className="text-4xl md:text-5xl font-bold mt-6 text-gray-900">
+            {formState === "signin" ? "Welcome back" : "Create an account"}
+          </h1>
+
+          <p className="text-gray-600 mt-3">
+            {formState === "signin"
+              ? "New here?"
+              : "Already have an account?"}
+            <button
+              onClick={() =>
+                setFormState(formState === "signin" ? "signup" : "signin")
+              }
+              className="md:ml-2 text-[#896790] cursor-pointer font-semibold hover:underline"
+            >
+              {formState === "signin" ? "Sign up" : "Sign in"}
+            </button>
+          </p>
+
+          {/* FORM */}
+          <div className="mt-10 space-y-5">
+
+            {formState === "signup" && (
               <div>
-                <Image src="/wellnest.svg" width="100" height="100" alt="logo" />
+                <label className="font-medium text-gray-700">Name</label>
+                <input
+                  type="text"
+                  placeholder="Full name"
+                  className="w-full mt-1 text-black bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-teal-500 outline-none transition"
+                />
               </div>
+            )}
 
-              <div className=" font-bold text-4xl  md:text-6xl mt-8 ">Get started</div>
-              {formState == "signup" && (
-                <div className="flex gap-1 text-sm md:text-lg text-gray-600 mt-2 ">
-                  <div>Already have an account? </div>
-                  <button
-                    onClick={() => {
-                      setFormState("signin");
-                    }}
-                    className="text-[#1a7772] cursor-pointer hover:underline font-semibold"
-                  >
-                    Sign in
-                  </button>
-                </div>
-              )}
-              {formState == "signin" && (
-                <div className="flex gap-1 text-sm md:text-lg text-gray-600 mt-2 ">
-                  <div>Create an account? </div>
-                  <button
-                    onClick={() => {
-                      setFormState("signup");
-                    }}
-                    className="text-[#1a7772] cursor-pointer  hover:underline font-semibold"
-                  >
-                    Sign up
-                  </button>
-                </div>
-              )}
-              {formState == "signup" && (
-                <div className="mt-8 flex flex-col p-4 rounded-[10px] relative h-fit">
-                  <div className="">
-                    <div>Name</div>
-                    <div className="border border-gray-300 w-full px-4 py-2 rounded-[10px]">
-                      <div>
-                        <input
-                          type="text"
-                          className="w-full h-full bg-transparent outline-none"
-                          placeholder="First Name"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <div>Email</div>
-                    <div className="border border-gray-300 w-full px-4 py-2 rounded-[10px]">
-                      <div>
-                        <input
-                          type="text"
-                          className="w-full h-full bg-transparent outline-none"
-                          placeholder="Enter your email"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <div>Password</div>
-                    <div className="border border-gray-300 w-full px-4 py-2 rounded-[10px] flex justify-between items-center">
-                      <div className="flex-grow">
-                        <input
-                          type="text"
-                          className="w-full h-full bg-transparent outline-none"
-                          placeholder="Enter password"
-                        />
-                      </div>
-                      <button
-                        onClick={() => {
-                          setShowPassword(!showPassword);
-                        }}
-                        className="ml-2"
-                      >
-                        {showPassword && (
-                          <Image
-                            src="/close_eye.svg"
-                            alt="hide"
-                            width="30"
-                            height="30"
-                          />
-                        )}
-                        {!showPassword && (
-                          <Image
-                            src="/open_eye.svg"
-                            alt="hide"
-                            width="30"
-                            height="30"
-                          />
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                  <button className="bg-[#1a7772] cursor-pointer hover:bg-[#315c5a] w-full  py-2 rounded-[10px] mt-8 text-white font-semibold">
-                    Sign up
-                  </button>
-                  <div className="flex justify-center w-full mt-4">or</div>
-                  <div className="w-full mt-4">
-                    <button
-                      onClick={async () => {
-                        await signIn("google", {
-                          callbackUrl: "http://localhost:3001",
-                        });
-                      }}
-                      className="w-full cursor-pointer hover:bg-gray-200 text-center border py-[8px] border-gray-300  rounded-[10px] bg-gray-50 flex justify-center items-center gap-3"
-                    >
-                      <Image
-                        src="/google.svg"
-                        width="30"
-                        height="30"
-                        alt="googlelogo"
-                      />
-                      <div>Sign in with Google</div>
-                    </button>
-                  </div>
-                </div>
-              )}
-              {formState == "signin" && (
-                <div className="mt-8 flex flex-col p-4 rounded-[10px] relative h-fit">
-                  <div>
-                    <div>Email</div>
-                    <div className="border border-gray-300 w-full px-4 py-2 rounded-[10px]">
-                      <div>
-                        <input
-                          type="text"
-                          className="w-full h-full bg-transparent outline-none"
-                          placeholder="Enter your email"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <div>Password</div>
-                    <div className="border border-gray-300 w-full px-4 py-2 rounded-[10px] flex justify-between items-center">
-                      <div className="flex-grow">
-                        <input
-                          type="text"
-                          className="w-full h-full bg-transparent outline-none"
-                          placeholder="Enter password"
-                        />
-                      </div>
-                      <button
-                        onClick={() => {
-                          setShowPassword(!showPassword);
-                        }}
-                        className="ml-2"
-                      >
-                        {showPassword && (
-                          <Image
-                            src="/close_eye.svg"
-                            alt="hide"
-                            width="30"
-                            height="30"
-                          />
-                        )}
-                        {!showPassword && (
-                          <Image
-                            src="/open_eye.svg"
-                            alt="hide"
-                            width="30"
-                            height="30"
-                          />
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                  <div className="flex justify-center w-full mt-4">or</div>
-                  <div className="w-full mt-4">
-                    <button
-                      onClick={async () => {
-                        await signIn("google", {
-                          callbackUrl: "http://localhost:3001",
-                        });
-                      }}
-                      className="w-full cursor-pointer hover:bg-gray-200 text-center border py-[8px] border-gray-300  rounded-[10px] bg-gray-50 flex justify-center items-center gap-3"
-                    >
-                      <Image
-                        src="/google.svg"
-                        width="30"
-                        height="30"
-                        alt="google logo"
-                      />
-                      <div>Sign in with Google</div>
-                    </button>
-                  </div>
-                  <button className="bg-[#1a7772] cursor-pointer hover:bg-[#315c5a] w-full  py-2 rounded-[10px] mt-8 text-white font-semibold">
-                    Sign in
-                  </button>
-                </div>
-              )}
+            <div>
+              <label className="font-medium text-gray-700">Email</label>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full mt-1 text-black bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-teal-500 outline-none transition"
+              />
             </div>
-            <div className="col-span-0 hidden md:inline-block md:col-span-1 h-full relative overflow-hidden">
-              <Image placeholder="blur" blurDataURL={"welcomeImageBlurDataUrl"} style={{
-                borderRadius: "35px",
-              }} className="absolute" src={"/login-intro.svg"} layout="fill" alt="welcome image" />
-              <div
-                // style={{
-                //   backgroundImage: "url(/welcomeimage2.jpg)",
-                //   backgroundSize: "cover",
-                // }}
-                className=" bg-transparent relative top  rounded-[35px] h-full pb-20"
-              >
-                <div className="pl-10 text-gray-600  text-2xl font-semibold pt-10">
-                  <div>get started</div>
 
-                  <div>right now.</div>
-                </div>
+            <div>
+              <label className="font-medium text-gray-700">Password</label>
+              <div className="flex items-center border border-gray-300 bg-gray-50 rounded-xl px-4 py-3 mt-1 focus-within:ring-2 focus-within:ring-teal-500">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter password"
+                  className="flex-1 bg-transparent outline-none text-black"
+                />
+                <button onClick={() => setShowPassword(!showPassword)}>
+                  <Image
+                    src={showPassword ? "/close_eye.svg" : "/open_eye.svg"}
+                    width={25}
+                    height={25}
+                    alt="toggle password visibility"
+                  />
+                </button>
               </div>
             </div>
+
+            {/* Submit Button */}
+            <button className="w-full cursor-pointer bg-[#896790] hover:bg-[#ae9ab3] text-white font-semibold rounded-xl py-3 mt-4 transition">
+              {formState === "signin" ? "Sign In" : "Sign Up"}
+            </button>
+
+            {/* Divider */}
+            <div className="flex items-center gap-3 my-2">
+              <div className="flex-grow h-px bg-gray-300"></div>
+              <span className="text-gray-500 text-sm">or</span>
+              <div className="flex-grow h-px bg-gray-300"></div>
+            </div>
+
+            {/* Google Button */}
+            <button
+              onClick={() =>
+                signIn()
+              }
+              className="w-full border text-black cursor-pointer border-gray-300 bg-slate-100 hover:bg-gray-100 rounded-xl py-3 font-medium flex items-center justify-center gap-3 transition"
+            >
+              <Image src="/google.svg" width={25} height={25} alt="Google" />
+              {formState === "signin" ? "Continue with Google" : "Sign up with Google"}
+            </button>
+          </div>
+        </div>
+
+        {/* Right Section: Illustration */}
+        <div className="hidden md:flex bg-[#E6E8D2] relative">
+          <Image
+            src="/login-intro-2.png"
+            alt="welcome illustration"
+            fill
+            className="object-contain  p-8 rounded-3xl"
+          />
+
+          <div className="absolute top-10 left-10 text-[#896790] font-semibold text-3xl drop-shadow">
+            <p>Get started</p>
+            <p>right now.</p>
           </div>
         </div>
       </div>

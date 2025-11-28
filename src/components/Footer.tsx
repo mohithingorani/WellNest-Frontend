@@ -19,7 +19,7 @@ export function Footer() {
           <div>
             Mob:{" "}
             <Link href="/afsd" className="underline">
-              +91 95794 11799
+              +91 9811033533
             </Link>
             <span>, </span>
             
@@ -30,7 +30,7 @@ export function Footer() {
            
           </div>
 
-          <div className="pt-8">© 2025 by Dishita Sharma</div>
+          <div className="pt-8">© 2025 by Mohit Hingorani</div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-4">
